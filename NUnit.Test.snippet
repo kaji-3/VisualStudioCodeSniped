@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippet Format="1.0.0">
+  <Header>
+    <Title>Generate NUnit Test</Title>
+    <Shortcut>test</Shortcut>
+    <Description>Generate NUnit Test</Description>
+    <SnippetTypes>
+      <SnippetType>Expansion</SnippetType>
+    </SnippetTypes>
+  </Header>
+  <Snippet>
+    <Declarations>
+      <Literal default="true">
+        <ID>name</ID>
+        <ToolTip>テストメソッドの名前</ToolTip>
+        <Default>TestName</Default>
+      </Literal>
+      <Literal default="true">
+        <ID>target</ID>
+        <ToolTip>ターゲットクラス名</ToolTip>
+        <Default>TargetClass</Default>
+      </Literal>
+      <Literal default="true">
+        <ID>targetArguments</ID>
+        <ToolTip>ターゲットクラスのコンストラクタの引数</ToolTip>
+      </Literal>
+      <Literal default="true">
+        <ID>methodArgumentType</ID>
+        <ToolTip>テスト対象メソッドの引数の型</ToolTip>
+        <Default>int</Default>
+      </Literal>
+      <Literal default="true">
+        <ID>methodArgumentValue</ID>
+        <ToolTip>テスト対象メソッドの引数の値</ToolTip>
+        <Default>0</Default>
+      </Literal>
+      <Literal default="true">
+        <ID>methodName</ID>
+        <ToolTip>テスト対象のメソッド名</ToolTip>
+         <Default>MethodName</Default>
+      </Literal>
+      <Literal default="true">
+        <ID>expectedType</ID>
+        <ToolTip>期待値の型</ToolTip>
+        <Default>int</Default>
+      </Literal>
+      <Literal default="true">
+        <ID>expectedValue</ID>
+        <ToolTip>期待値の型</ToolTip>
+        <Default>0</Default>
+      </Literal>
+      <Literal default="true">
+        <ID>actualType</ID>
+        <ToolTip>結果値の型</ToolTip>
+        <Default>int</Default>
+      </Literal>
+      <Literal default="true">
+        <ID>msg</ID>
+        <ToolTip>失敗時のメッセージ</ToolTip>
+        <Default></Default>
+      </Literal>
+    </Declarations>
+    <Code Language="csharp" Format="CData">
+    <![CDATA[
+    [Test]
+    public void $name$()
+    {$end$
+            // Arrange
+            $target$ target = new $target$($targetArguments$);             
+            $methodArgumentType$ p = $methodArgumentValue$;
+            
+            $expectedType$ expected = $expectedValue$;
+            
+            // Act
+            $actualType$ actual = target.$methodName$(p);
+
+            // Assert
+            Assert.AreEqual(expected, actual, "$msg$");
+        
+    }]]>
+	</Code>
+    </Snippet>
+</CodeSnippet>
